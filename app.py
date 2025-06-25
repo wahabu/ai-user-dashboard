@@ -48,9 +48,8 @@ y_pred = model.predict(X_test)
 st.subheader("🧠 AI Prediction Performance")
 st.text(classification_report(y_test, y_pred))
 
+# User input section first
 st.subheader("🔍 Predict Purchase Intent for a New User")
-
-# User input
 age_input = st.number_input("Enter user's age", min_value=10, max_value=100, value=30)
 login_days_input = st.number_input("Enter days since last login", min_value=0, max_value=365, value=10)
 
@@ -63,3 +62,8 @@ if st.button("Predict"):
         st.success("✅ Likely to purchase again (active buyer)")
     else:
         st.warning("⚠️ Unlikely to purchase (inactive buyer)")
+
+# Predict on test set and show model performance
+y_pred = model.predict(X_test)
+st.subheader("🧠 AI Prediction Performance")
+st.text(classification_report(y_test, y_pred))
